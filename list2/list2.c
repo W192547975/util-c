@@ -38,7 +38,7 @@ int Llook(struct PNODES *p,
 }
 
 //添加节点 
-list_exits Ladd(struct PNODES *p,int number)
+int Ladd(struct PNODES *p,int number)
 {
 	static int t=0;
 	if(number<0)return t;

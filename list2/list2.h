@@ -42,7 +42,7 @@ extern "C"{
 int Llook(struct PNODES *p,
 	int number,
 	int (*func)(struct PNODES *p,int n));
-list_exits Ladd(struct PNODES *p,int number);
+int Ladd(struct PNODES *p,int number);
 int Ldelete(struct PNODES *p,int nothing);
 
 #ifdef	__cplusplus
