@@ -23,7 +23,7 @@ typedef long bitbuf_t;
 
 #define GETLEN(buf)		( (buf)>>CAP & LENMAX )
 #define SETLEN(buf,len)	( ((buf)&~(LENMAX<<CAP)) | ((len)&LENMAX)<<CAP )
-#define ADDLEN(buf,len)	SETLEN(buf,GETLEN(buf)+(BITBUF_T)(len))
+#define ADDLEN(buf,len)	SETLEN(buf,GETLEN(buf)+(len))
 #define WRITEBUF(buf,num,from,len)	( (buf)&~(BUFMAX>>(from)) | ((num)<<CAP-(len)&BUFMAX)>>(from) )
 #define WRITE(buf,num,len)	WRITEBUF(ADDLEN(buf,len),num,GETLEN(buf),len)
 
