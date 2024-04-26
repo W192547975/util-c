@@ -15,7 +15,9 @@
 
 unsigned freelen(unsigned int num)
 {
-	unsigned fl,n=num;
-	for(fl=0;~(n^num)&1;fl++)n>>=1;
+	unsigned fl;
+	num^=num>>1;
+	if(num==0)return 0;
+	for(fl=0;~num&1;fl++)num>>=1;
 	return fl;
 }

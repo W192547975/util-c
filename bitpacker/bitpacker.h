@@ -13,27 +13,18 @@
 ** limitations under the License.
 */
 
-#include	<stdlib.h>
-#include	"bitpacker.h"
+#ifndef _BITPACKER_H
+#define _BITPACKER_H
 
-unsigned char *insert(unsigned char *dst,unsigned long src,int len)
-{
-	while(dst!=NULL&&len>0)
-	{
-		unsigned long n=src;
-		unsigned cap=freelen(*dst);
-		if(cap==0)return NULL;
-		if(len>cap)n>>=len-cap;
-		if(len<cap)
-		{
-			n<<=cap-len;
-			if((src&1)==0)n|=(1ul<<cap-len)-1;
-		}
-		n&=(1ul<<cap)-1;
-		*dst&=~((1u<<cap)-1);
-		*dst|=n;
-		if(len>=cap)dst++;
-		len-=cap;
-	}
-	return dst;
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+unsigned freelen(unsigned int num);
+unsigned char *insert(unsigned char *dst,unsigned long src,int len);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif
